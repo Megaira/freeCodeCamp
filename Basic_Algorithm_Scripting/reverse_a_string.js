@@ -1,4 +1,4 @@
-//Reverse the provided string.
+// Reverse the provided string.
 
 /*
 .split(): function that splits a string into an array of strings using a 
@@ -10,7 +10,7 @@ specified separator
 .join(): function that joins all elements of an array into a string
 */
 
-//split() returns an array on which reverse() and join() can be applied:
+// split() returns an array on which reverse() and join() can be applied:
 
 function reverseString(str) {
 	var strReverse = str.split('').reverse().join('');
