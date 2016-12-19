@@ -17,7 +17,7 @@ function factorialize(num) {
 }
 
 factorialize(5);
-
+// Testing:
 console.log(typeof(factorialize(5)))
 console.log(factorialize(5))
 console.log(factorialize(10))
