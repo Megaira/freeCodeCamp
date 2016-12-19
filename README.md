@@ -2,9 +2,9 @@
 Descriptions for each challenge and my solutions can be found in the code comments.
 ## Basic Algorithm Scripting
 - [x] Reverse a String
-- [ ] Factorialize a Number
-- [ ] Check for Palindromes
-- [ ] Find the Longest Word in a String
+- [x] Factorialize a Number
+- [x] Check for Palindromes
+- [x] Find the Longest Word in a String
 - [ ] Title Case a Sentence
 - [ ] Return Largest Numbers in Arrays
 - [ ] Confirm the Ending
