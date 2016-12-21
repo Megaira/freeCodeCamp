@@ -11,7 +11,7 @@ Descriptions for each challenge and my solutions can be found in the code commen
 - [ ] Repeat a string repeat a string
 - [ ] Truncate a string
 - [ ] Chunky Monkey
-- [ ] Slasher Flick
+- [x] Slasher Flick
 - [ ] Mutations
 - [ ] Falsy Bouncer
 - [ ] Seek and Destroy
