@@ -3,6 +3,7 @@
 // .str.repeat(count): function constructs and returns a new string
 // which contains the specified number of copies of the original string.
 // count: int, gives the number of times to repeat the string
+// if count is negative function will return 'RangeError'
 
 function repeatStringNumTimes(str, num) {
   // repeat after me
