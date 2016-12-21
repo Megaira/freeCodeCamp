@@ -8,7 +8,7 @@ Descriptions for each challenge and my solutions can be found in the code commen
 - [x] Title Case a Sentence
 - [ ] Return Largest Numbers in Arrays
 - [ ] Confirm the Ending
-- [ ] Repeat a string repeat a string
+- [x] Repeat a string repeat a string
 - [ ] Truncate a string
 - [ ] Chunky Monkey
 - [x] Slasher Flick
