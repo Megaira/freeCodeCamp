@@ -1,4 +1,4 @@
-# freeCodeCamp Challenges
+# (freeCodeCamp)[www.freecodecamp.com] Challenges
 Descriptions for each challenge and my solutions can be found in the code comments.
 ## Basic Algorithm Scripting
 - [x] Reverse a String
