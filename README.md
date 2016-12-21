@@ -5,7 +5,7 @@ Descriptions for each challenge and my solutions can be found in the code commen
 - [x] Factorialize a Number
 - [x] Check for Palindromes
 - [x] Find the Longest Word in a String
-- [ ] Title Case a Sentence
+- [x] Title Case a Sentence
 - [ ] Return Largest Numbers in Arrays
 - [ ] Confirm the Ending
 - [ ] Repeat a string repeat a string
