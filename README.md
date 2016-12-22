@@ -9,8 +9,8 @@ Descriptions for each challenge and my solutions can be found in the code commen
 - [ ] Return Largest Numbers in Arrays
 - [ ] Confirm the Ending
 - [x] Repeat a string repeat a string
-- [ ] Truncate a string
-- [ ] Chunky Monkey
+- [x] Truncate a string
+- [x] Chunky Monkey
 - [x] Slasher Flick
 - [ ] Mutations
 - [ ] Falsy Bouncer
