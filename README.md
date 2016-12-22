@@ -12,8 +12,8 @@ Descriptions for each challenge and my solutions can be found in the code commen
 - [x] Truncate a string
 - [x] Chunky Monkey
 - [x] Slasher Flick
-- [ ] Mutations
-- [ ] Falsy Bouncer
+- [x] Mutations
+- [x] Falsy Bouncer
 - [ ] Seek and Destroy
 - [ ] Where do I belong
 - [ ] Caesars Cipher
