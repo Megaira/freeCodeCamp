@@ -6,8 +6,8 @@ Descriptions for each challenge and my solutions can be found in the code commen
 - [x] Check for Palindromes
 - [x] Find the Longest Word in a String
 - [x] Title Case a Sentence
-- [ ] Return Largest Numbers in Arrays
-- [ ] Confirm the Ending
+- [x] Return Largest Numbers in Arrays
+- [x] Confirm the Ending
 - [x] Repeat a string repeat a string
 - [x] Truncate a string
 - [x] Chunky Monkey
