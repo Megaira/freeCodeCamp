@@ -7,90 +7,106 @@ html {
 body {
   margin-bottom: 60px;
 }
+/****************************
+  PAGE COVER: QUOTE & IMAGE
+*****************************/
 /* Cover image and background colour*/
 .cover {
   background-color: #333333;
   width: 100%;
-  padding-bottom: 30px;
-  margin-bottom: 0 0 30px 0;
-  height: 500px;
-  margin-bottom: 0;
 }
 .cover .container {
   max-width: 100%;
 }
-.cover .row {
-  margin-right: -69px;
-}
+.cover .row {}
 .cover .row .cover-image {
   padding-right: 0;
 }
 .cover .row .cover-image img {
   width: auto;
-  height: 100%;
-  max-height: 500px;
   padding-right: 0;
 }
 .cover blockquote {
-  margin-top: 80px;
+  margin-top: 30px;
+}
+@media screen and (min-width: 992px) {
+  .cover blockquote {
+    margin-top: 80px;
+    margin-left: 20px;
+  }
 }
 .cover blockquote p {
   color: #fff;
-  font-family: 'Lato', sans-serif;
-  font-size: 28px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
   letter-spacing: 1px;
-  line-height: 48px;
+  line-height: 38px;
 }
 .cover blockquote footer {
   color: fff;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 20px;
-  line-height: 36px;
+  font-weight: 100;
+  line-height: 32px;
+  letter-spacing: 1px;
   font-style: italic;
+  opacity: .6;
 }
-
+@media screen and (min-width: 1024px) {
+  .cover blockquote p {
+    font-size: 30px;
+    letter-spacing: 1px;
+    line-height: 42px;
+  }
+  .cover blockquote footer {
+    font-size: 24px;
+    line-height: 36px;
+  }
+}
+/****************************
+  TABS
+*****************************/
 .tab-container {
   padding-bottom: 60px;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
+  text-align: justify;
 }
-
+/* TAB LINKS */
 .tab-links {
   display: block;
+  background-color: yellow;
   width: 100%;
   padding: 0px 15px 0 15px;
   text-align: center;
   font-family: 'Lato', sans-serif;
   text-transform: uppercase;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
+  overflow: auto;
+  /*margin: 15px -300px 15px 15px;
+  padding-right: 300px;*/
+  white-space: nowrap;
 }
-.tab-links li {
+.tab-links a {
   display: inline-block;
-  width: 200px;
-  margin: 0;
-}
-
-.tab-links li a {
-  display: inline-block;
-  padding: 13px 15px;
-  width: 200px;
-  border-bottom: 3px solid #fff;
+  padding: 0 15px;
+  /*border-bottom: 3px solid #fff;*/
   font-size: 16px;
+  line-height: 38px;
   font-weight: 600;
   color: #4c4c4c;
   transition: all linear 0.15s;
   text-decoration: none;
 }
-.tab-links li a:hover {
+.tab-links a:hover {
   background-color: rgba(197, 49, 99, .2);
   text-decoration: none;
-  border-bottom: 3px solid #C53163;
+  /*border-bottom: 3px solid #C53163;*/
 }
 .tab-links .active a {
   border-bottom: 3px solid #C53163;
   color: #C53163;
 }
-
+/* TAB CONTENT */
 .tab-content {
   padding: 30px 15px;
   background-color: #ffffff;
@@ -106,7 +122,6 @@ body {
 }
 .tab-content .tab img {
   float: left;
-/*  display: inline-block;*/
   margin: 0 35px 0 0;
 }
 .tab-content .tab img:after {
@@ -126,6 +141,9 @@ body {
   border-radius: 1px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+/****************************
+  FOOTER
+*****************************/
 .footer {
   position: absolute;
   bottom: 0;
