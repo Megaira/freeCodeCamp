@@ -3,8 +3,8 @@ $(document).ready(function() {
 
     event.preventDefault();
 
-    $(this).parent().addClass('active');
-    $(this).parent().siblings().removeClass('active');
+    $(this).addClass('active');
+    $(this).siblings().removeClass('active');
 
     var tabRef = $(this).attr('href');
 
