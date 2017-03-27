@@ -1,0 +1,45 @@
+html {
+  position: relative; /* for footer positioning */
+  min-height: 100%;
+}
+body {
+  /* backgroung colour random when 'new quote' button clicked */
+  margin-bottom: 50px; /* footer height */
+}
+
+#quote-box {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+}
+#quote-box blockquote {
+  margin-bottom: 50px;
+}
+#quote-box blockquote p {
+  font-style: italic;
+}
+#quote-box .btn {
+  display: inline-block;
+  background-color: red;
+  color: #fff;
+  padding: 5px 8px;
+}
+#quote-box .btn-left {
+  float: left;
+}
+#quote-box .btn-right {
+  float: right;
+}
+#quote-box::after {
+  clear: both;
+}
+
+.page-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #f5f5f5;
+  padding: 15px;
+  text-align: center;
+}
