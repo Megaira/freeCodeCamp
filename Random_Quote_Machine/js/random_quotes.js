@@ -26,7 +26,7 @@ function newQuote() {
       console.log(r + g + b);
 
       $("#quote-box blockquote").html(
-        "<p>"+ quoteText +"</p><footer>"+ quoteAuthor +"</footer>"
+        "<p>"+ quoteText +"</p><footer class='blockquote-footer'>"+ quoteAuthor +"</footer>"
       );
       $("#quote-box blockquote").css("border-left-color", "rgb(" + r + "," + g + "," + b +")")
       $("#quote-box blockquote footer").css("color", "rgb(" + r + "," + g + "," + b +")")

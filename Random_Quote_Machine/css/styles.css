@@ -23,6 +23,7 @@ body {
   background-color: red;
   color: #fff;
   padding: 5px 8px;
+  cursor: pointer;
 }
 #quote-box .btn-left {
   float: left;
