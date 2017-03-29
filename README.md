@@ -14,9 +14,9 @@ Descriptions for each challenge and my solutions can be found in the code commen
 - [x] Slasher Flick
 - [x] Mutations
 - [x] Falsy Bouncer
-- [ ] Seek and Destroy
-- [ ] Where do I belong
-- [ ] Caesars Cipher
+- [x] Seek and Destroy
+- [x] Where do I belong
+- [x] Caesars Cipher
 
 ## Intermediate Algorithm Scripting
 
