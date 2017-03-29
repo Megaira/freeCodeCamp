@@ -4,9 +4,23 @@
   var weatherURL;
   var unit = 'metric';
 
-  function showWeather(position) {
+  function switchUnit(position) {
+    if ($(this).is(':checked')) {
+        unit = 'imperial';
+    } else {
+        unit = 'metric';
+    }
+    showWeather();
+  }
+
+  function returnPosition(position) {
     lat = position.coords.latitude;
     lon = position.coords.longitude;
+    showWeather();
+  }
+
+
+  function showWeather() {
     // lat = 51.509865;
     // lon = -0.118092;
     console.log(lat, lon);
@@ -14,41 +28,45 @@
 
     $.getJSON(weatherURL, function(result) {
       var city = result.name;
-      var tempCelsius = Math.floor(result.main.temp);
+      var temp = Math.floor(result.main.temp);
       var weatherId = result.weather[0].id;
       var weatherStatus = result.weather[0].description;
 
       var prefix = 'wi wi-owm-';
       var code = weatherId;
       var icon = '';
+      // Sunrise and Sunset
+      var sunrise = result.sys.sunrise;
+      var sunset = result.sys.sunset;
+      var time = Date.now();
 
-      // if (!(code > 699 && code < 800) && !(code > 899 && code < 1000)) {
-      //   // icon = 'day-' + icon;
-      // }
+
+      if (sunrise < time && sunset > time) {
+        prefix = prefix + 'day-';
+      }else {
+        prefix = prefix + 'night-'
+      }
       icon = prefix + code;
+      console.log(icon);
+      console.log(unit);
+
 
       $('.location p').text(city);
       $('.weather-icon i').attr('class', icon);
       $('.weather-status p').text(weatherStatus);
-      $('.temperature').html('<span class="degrees">' + tempCelsius + '&#176;C</span>');
+      if (unit == 'metric') {
+        $('.temperature').html('<span class="degrees">' + temp + '&#176;C</span>');
+      } else {
+        $('.temperature').html('<span class="degrees">' + temp + '&#176;F</span>');
+      }
 
-      // console.log(city);
-      // console.log(icon);
-      // console.log(tempCelsius);
-      // console.log(tempFahrenheit);
-      // console.log(tempHigh);
-      // console.log(tempLow);
-
-      console.log(result);
-
-      // console.log(weatherId);
-      // console.log(weatherStatus);
     });
   }
-
+  console.log(lat, lon);
 
 $(document).ready(function(){
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showWeather);
+    navigator.geolocation.getCurrentPosition(returnPosition);
+    $('input[type=checkbox]').on('click', switchUnit);
   }
 });
