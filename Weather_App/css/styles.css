@@ -5,18 +5,14 @@ html {
 }
 body {
   margin-bottom: 50px; /* footer height */
-  /*background-color: #000;
-  background-image: url('http://res.cloudinary.com/dftignrf8/image/upload/v1490711148/weather_app/sky-sunny-clouds-cloudy.jpg');*/
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   font-family: 'Lato', sans-serif;
+  color: #fff;
 }
 .current {
-  background: -o-linear-gradient(#faeaa0, #f9db70);
+  /*background: -o-linear-gradient(#faeaa0, #f9db70);
   background: -moz-linear-gradient(#faeaa0, #f9db70);
   background: -webkit-linear-gradient(#faeaa0, #f9db70);
-  background: linear-gradient(#faeaa0, #f9db70);
+  background: linear-gradient(#faeaa0, #f9db70);*/
   padding: 15px;
 }
 /* Toggle Button for Unit change */
@@ -136,4 +132,5 @@ footer {
   background-color: #fff;
   padding: 15px;
   text-align: center;
+  color: #333;
 }
