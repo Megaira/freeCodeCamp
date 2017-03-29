@@ -81,7 +81,7 @@ label {
 }
 /* Container for Current Weather Data Display */
 .current .current-container {
-  width: 200px;
+  /*width: 200px;*/
   margin: 0 auto;
   padding: 90px 40px 40px 40px;
 }
@@ -89,7 +89,7 @@ label {
   text-align: center;
 }
 .current .current-container .location p {
-  font-size: 16px;
+  font-size: 26px;
 }
 .current .current-container .weather-icon {
   margin-top: 15px;

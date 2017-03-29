@@ -123,11 +123,8 @@ $(document).ready(function(){
         latitude: loc[0],
         longitude: loc[1]
       };
-      console.log(coords);
       returnPositionVaiIp( coords );
     })
   });
-
-
   $('input[type=checkbox]').on('click', switchUnit);
 });
