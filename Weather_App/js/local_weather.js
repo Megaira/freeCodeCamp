@@ -110,6 +110,7 @@ function showWeather( position ) {
 $(document).ready(function(){
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition( returnPosition );
-    $('input[type=checkbox]').on('click', switchUnit);
   }
+  $('input[type=checkbox]').on('click', switchUnit);
+
 });
