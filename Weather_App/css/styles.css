@@ -15,15 +15,48 @@ body {
 .current {
   background-color: #ffda6b;
 }
+.current .switch {
+  background-color: #fff;
+}
+.toggle-u {
+  position: absolute;
+  visibility: hidden;
+}
+.toggle-u + label {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+.toggle-u-round + label {
+  padding: 2px;
+  width: 120px;
+  height: 60px;
+  background-color: #ddd;
+  border-radius: 60px;
+}
+
 .current .current-container {
   width: 200px;
   margin: 0 auto;
   padding: 40px;
 }
+.current .current-container .location {
+  text-align: center;
+}
+.current .current-container .location p {
+  font-size: 16px;
+}
 .current .current-container .weather-icon {
   margin-top: 15px;
   margin-bottom: 15px;
+  text-align: center;
 }
+.current .current-container .weather-icon i {
+  font-size: 56px;
+}
+
 .current .current-container .weather-icon img {
   margin: 0 auto;
   display: block;

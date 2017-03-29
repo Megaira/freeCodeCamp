@@ -9,6 +9,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/weather-icons.min.css">
     <link rel="stylesheet" href="css/styles.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -24,25 +25,32 @@
     </div> -->
 
     <div class="container-fluid current">
+      <div class="switch">
+        <input class="toggle-u toggle-u-round" id="toggle-unit" type="checkbox">
+        <label for="toggle-unit"></label>
+      </div>
       <!-- <div class="location">München</div> -->
       <!-- <div class="date-time">Tue, 28. March 16:12</div> -->
       <div class="current-container">
+        <div class="location">
+          <p></p>
+        </div>
         <div class="weather-icon">
-          <img src="http://res.cloudinary.com/dftignrf8/image/upload/v1490720122/weather_app/sun_cloudy.svg">
+          <i></i>
+          <!-- <img src="http://res.cloudinary.com/dftignrf8/image/upload/v1490720122/weather_app/sun_cloudy.svg"> -->
         </div>
         <div class="weather-status">
-          <p>sunny</p>
+          <p></p>
         </div>
         <div class="temperature">
-          <span class="degrees">16</span><span class="celsius">&#176;C</span>
         </div>
-        <div class="high-low">
+        <!-- <div class="high-low">
           <span class="high">H 18 &#176;C</span>
           <span class="low">L 5 &#176;C</span>
-        </div>
+        </div> -->
       </div>
     </div>
-    
+
     <!-- <div class="container forecast">
       <div class="">5 Tage Wetter
         <table class="table">
@@ -59,6 +67,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <!-- <script src="js/weather.js"></script> -->
+    <script src="js/weather.js"></script>
   </body>
 </html>
