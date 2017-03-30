@@ -6,21 +6,22 @@ html {
 body {
   margin-bottom: 50px; /* footer height */
   font-family: 'Lato', sans-serif;
-  background-color: #f7c525;
-  color: #fff;
+  /*background-color: #f7c525;*/
+  color: #333;
+  /*color: #fff;*/
 }
 .current {
   /*background: -o-linear-gradient(#faeaa0, #f9db70);
   background: -moz-linear-gradient(#faeaa0, #f9db70);
   background: -webkit-linear-gradient(#faeaa0, #f9db70);
   background: linear-gradient(#faeaa0, #f9db70);*/
+  background-color: #fff;
   padding: 15px;
   margin-bottom: 3px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 /* Toggle Button for Unit change */
 .current .switch {
-  /*background-color: #fff;*/
   display: inline-block;
   float: right;
 }
@@ -92,13 +93,14 @@ label {
   text-align: center;
 }
 .current .current-container .day-date h2 {
+  display: inline-block;
   font-size: 40px;
   font-weight: bold;
   text-transform: uppercase;
 }
-.current .current-container .day-date h2 small {
+.current .current-container .day-date span {
   font-size: 18px;
-  color: #fff;
+  padding-left: 5px;
 }
 .current .current-container .location {
   text-align: center;
@@ -136,7 +138,7 @@ label {
 .current .current-container .high-low {
   text-align: center;
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 400;
   width: 120px;
   margin: 0 auto;
 }

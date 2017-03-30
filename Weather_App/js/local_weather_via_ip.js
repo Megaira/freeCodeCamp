@@ -80,7 +80,8 @@ function showWeather( position ) {
         weatherColour = '#607D8B';
         break;
       case 8:
-        weatherColour = '#FFD54F';
+        // weatherColour = '#FFD54F';
+        weatherColour = '#f7c525';
         break;
       case 9:
         weatherColour = '#00E676';
@@ -88,8 +89,9 @@ function showWeather( position ) {
       default:
         weatherColour = '#CDDC39';
     }
-    // Change background-color on .current container:
-    $('.current').css('background-color', weatherColour);
+    // Change font color on .current container:
+    $('body').css('background-color', weatherColour);
+    $('.current').css('color', weatherColour);
 
     // SHOW WEATHER CONDITIONS:
     // Get weather condition description & write it to .weather-status
@@ -99,19 +101,12 @@ function showWeather( position ) {
     // SHOW TEMPERATURE WITH UNIT:
     // Get current temperature without decimals
     var temp = Math.floor(result.main.temp);
-    // Generate temperature unit HTML code according to user choice
-    var tempUnit;
-    if (unit == 'metric') {
-      tempUnit = '&#176;C';
-    } else {
-      tempUnit = '&#176;F';
-    }
-    // Write temp & tempUnit to .temperature:
-    $('.degrees').text(temp);
-    $('.temp-unit').html(tempUnit);
+
+    // Write temp to .temperature:
+    $('.degrees').html(temp + '&#176;');
 
   });
-  showForecast();
+  getForecast();
 }
 
 $(document).ready(function(){
@@ -128,5 +123,8 @@ $(document).ready(function(){
       returnPositionVaiIp( coords );
     })
   });
+
   $('input[type=checkbox]').on('click', switchUnit);
+  $('input[type=checkbox]').on('click', emptyContainers);
+  $(window).resize(screenSizeDetection);
 });

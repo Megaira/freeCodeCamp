@@ -1,96 +1,135 @@
 // WEEKDAY AND DATE:
-
+// Variables:
 var weekdays = ['Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat']; // in JS .getDay() Sunday is 0
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+// Variables for Additional Information for current Day Weather:
+var currentTimestamp;
+var currentDateTime;
+var currentWeekdayId;
+var currentDate;
+var currentMonthId;
 
+var currentWeekday;
+var currentMonth;
 
-function showForecast( position ) {
+var currentHigh;
+var currentLow;
+
+// Variables for Forecast:
+var numberOfDays;
+var forecastTimestamp;
+var forecastStatus;
+var forecastId;
+var forecastTemp;
+
+var forecastDateTime;
+var forecastWeekdayId;
+var forecastDate;
+var forecastMonthId;
+
+var forecastWeekday;
+var forecastMonth;
+
+function getForecast( position ) {
   var forecastURL = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + lat + '&lon=' + lon + '&units=' + unit + '&cnt=8&APPID=ae44e8d67a569c6b8064d639567e8cec';
 
   $.getJSON(forecastURL, function( forecast ) {
-
+    // ADDITIONAL INFORMATION FOR CURRENT DAY:
     // Current Weekday and Date:
-    var currentTimestamp = forecast.list[0].dt;
-    var currentDateTime = new Date(currentTimestamp * 1000);
-    var currentWeekdayId = currentDateTime.getDay();
-    var currentDate = currentDateTime.getDate();
-    var currentMonthId = currentDateTime.getMonth();
+    currentTimestamp = forecast.list[0].dt;
+    currentDateTime = new Date(currentTimestamp * 1000);
+    currentWeekdayId = currentDateTime.getDay();
+    currentDate = currentDateTime.getDate();
+    currentMonthId = currentDateTime.getMonth();
 
-    var currentWeekday = weekdays[currentWeekdayId];
-    var currentMonth = months[currentMonthId];
-    $('.day-date').html('<h2>' + currentWeekday + ' <small>' + currentDate + '' + currentMonth + '</small></h2>');
+    currentWeekday = weekdays[currentWeekdayId];
+    currentMonth = months[currentMonthId];
+    $('.day-date').html('<h2>' + currentWeekday + '</h2><span>' + currentDate + '' + currentMonth + '</span>');
 
     // Temperature Min and Max of current Day:
-    var currentHigh = Math.floor(forecast.list[0].temp.max);
-    var currentLow = Math.floor(forecast.list[0].temp.min);
-    var highLowUnit;
-    if (unit == 'metric') {
-      highLowUnit = '&#176;C';
-    } else {
-      highLowUnit = '&#176;F';
-    }
-    $('.high-low').html('<span class="high">H ' + currentHigh + highLowUnit + '</span><span class="low">L ' + currentLow + highLowUnit + '</span>');
+    currentHigh = Math.floor(forecast.list[0].temp.max);
+    currentLow = Math.floor(forecast.list[0].temp.min);
+
+    $('.high-low').html('<span class="high">H ' + currentHigh + '&#176;</span><span class="low">L ' + currentLow + '&#176;</span>');
 
 
-    // Large screen table:
-    var numberOfDays = forecast.list;
-    var forecastTimestamp;
-    var forecastStatus;
-    var forecastId;
-    var forecastTemp;
+    // FORECAST:
+    // Write Array of Forecast Days to number of Days:
+    numberOfDays = forecast.list;
 
-    var forecastDateTime;
-    var forecastWeekdayId;
-    var forecastDate;
-    var forecastMonthId;
-    //
-    var forecastWeekday;
-    var forecastMonth;
-
-
-    for (var i = 1; i < numberOfDays.length; i++) {
-      // Weekday:
-      forecastTimestamp = numberOfDays[i].dt;
-      forecastDateTime = new Date(forecastTimestamp * 1000);
-      forecastWeekdayId = forecastDateTime.getDay();
-      forecastDate = forecastDateTime.getDate();
-      forecastMonthId = forecastDateTime.getMonth();
-      forecastWeekday = weekdays[forecastWeekdayId];
-      forecastMonth = months[forecastMonthId];
-
-      forecastStatus = numberOfDays[i].weather[0].description;
-      forecastId = numberOfDays[i].weather[0].id;
-      forecastTemp = Math.floor(numberOfDays[i].temp.day);
-
-      showForecast();
-    }
-
-    function showForecast() {
-      // Show Weekday
-      $('.forecast-day').append('<th>' + forecastWeekday + '</th>');
-
-      // Show Icon
-      var forecastIcon;
-      var forecastPrefix = 'wi wi-owm-'
-      forecastIcon = forecastPrefix + forecastId;
-
-      var forecastIconCell = '<td><i class="' + forecastIcon + '"></i></td>'
-      $('.forecast-icon').append(forecastIconCell);
-      // Show Temperature
-      var forecastUnit;
-      if (unit == 'metric') {
-        forecastUnit = '&#176;C';
-      } else {
-        forecastUnit = '&#176;F';
-      }
-      var forecastTempCell = '<td><span>' + forecastTemp +'</span>' + forecastUnit + '</td>'
-      $('.forecast-temp').append(forecastTempCell);
-    }
-
-    $('input[type=checkbox]').on('click', function() {
-      $('.forecast-day').empty();
-      $('.forecast-icon').empty();
-      $('.forecast-temp').empty();
-    });
+    screenSizeDetection(numberOfDays);
   });
+};
+
+// Check Screen Size and call appropriate function:
+function screenSizeDetection() {
+  var windowWith = $(window).width();;
+  if (windowWith < 768) {
+    forecastSmallScreen();
+  } else {
+    forecastLargeScreen();
+  }
+};
+
+// Number of Days on Small Screens:
+function forecastSmallScreen() {
+  emptyContainers();
+  for (var i = 1; i < 5; i++) {
+    forecastInfos(i);
+    showForecast();
+  }
+};
+// Number of Days on Large Screens:
+function forecastLargeScreen() {
+  emptyContainers();
+  for (var i = 1; i < numberOfDays.length; i++) {
+    forecastInfos(i);
+    showForecast();
+  }
+};
+
+// Empty Forecast Containers (before writing in new values)
+function emptyContainers() {
+  $('.forecast-day').empty();
+  $('.forecast-icon').empty();
+  $('.forecast-temp').empty();
 }
+
+
+
+// Calculate Forecast Information:
+function forecastInfos(i) {
+  // FORECAST WEEKDAY
+  // Get Timestamp for Day:
+  forecastTimestamp = numberOfDays[i].dt;
+  // Convert Timestamp to Date and Time:
+  forecastDateTime = new Date(forecastTimestamp * 1000); // * 1000 for Date() only takes milliseconds
+  // Get Weekday Number:
+  forecastWeekdayId = forecastDateTime.getDay();
+  // Get Weekday Name with weekdayId
+  forecastWeekday = weekdays[forecastWeekdayId];
+
+  // FORECAST WEATHER CONDITIONS AND TEMPERATURE:
+  // Get Weather Id for Day:
+  forecastId = numberOfDays[i].weather[0].id;
+  // Get Day Temperature for Day:
+  forecastTemp = Math.floor(numberOfDays[i].temp.day);
+}
+
+// Show Forecast Information in Forecast Containers:
+function showForecast() {
+  // Show Weekday
+  $('.forecast-day').append('<th>' + forecastWeekday + '</th>');
+
+  // Show Icon
+  var forecastIcon;
+  var forecastPrefix = 'wi wi-owm-'
+  forecastIcon = forecastPrefix + forecastId;
+
+  var forecastIconCell = '<td><i class="' + forecastIcon + '"></i></td>'
+  $('.forecast-icon').append(forecastIconCell);
+  // Show Temperature
+
+  var forecastTempCell = '<td><span>' + forecastTemp +'&#176;</span></td>';
+  $('.forecast-temp').append(forecastTempCell);
+};
