@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/weather-icons.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/forecast_styles.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,6 +33,8 @@
         <span>&#176;F</span>
       </div>
       <div class="current-container">
+        <div class="day-date">
+        </div>
         <div class="location">
           <p></p>
         </div>
@@ -45,21 +48,40 @@
           <span class="degrees"></span>
           <span class="temp-unit"></span>
         </div>
-        <!-- <div class="high-low">
-          <span class="high">H 18 &#176;C</span>
-          <span class="low">L 5 &#176;C</span>
-        </div> -->
+        <div class="high-low"></div>
       </div>
     </div>
+    <!-- 5 Day Forecast -->
+    <div class="container forecast">
+      <!-- Small screen forecast -->
+      <div class="hidden-sm hidden-md hidden-lg">
+        this is a small screen
 
-    <!-- <div class="container forecast">
-      <div class="">5 Tage Wetter
-        <table class="table">
-          <thead></thead>
-          <tbody></tbody>
-        </table>
       </div>
-    </div> -->
+      <!-- Large screen forecast -->
+      <div class="hidden-xs forecast-large">
+        <!-- this is a large screen -->
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <table class="table">
+              <thead>
+                <tr class="forecast-day">
+                  <th>MON</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="forecast-icon">
+
+                </tr>
+                <tr class="forecast-temp">
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <footer>
       <div class="container"><p>Made with <i class="fa fa-coffee" aria-hidden="true"></i> and <i class="fa fa-music" aria-hidden="true"></i> by mediasittich.</p></div>
@@ -70,5 +92,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- <script src="js/local_weather.js"></script> -->
     <script src="js/local_weather_via_ip.js"></script>
+    <script src="js/forecast.js"></script>
   </body>
 </html>

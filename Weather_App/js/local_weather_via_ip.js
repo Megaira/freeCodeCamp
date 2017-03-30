@@ -2,6 +2,7 @@
 var lat;
 var lon;
 var unit = 'metric'; // default unit
+var time = Date.now() / 1000; // in seconds = milliseconds -> /1000
 
 // Functions:
 // Get Coordinates and call showWeather()
@@ -42,7 +43,7 @@ function showWeather( position ) {
     var weatherId = result.weather[0].id;
     var sunrise = result.sys.sunrise; // in seconds
     var sunset = result.sys.sunset; // in seconds
-    var time = Date.now() / 1000; // in milliseconds -> /1000
+
 
     // Weather icon:
     var icon; // icon = prefix + weatherId
@@ -110,6 +111,7 @@ function showWeather( position ) {
     $('.temp-unit').html(tempUnit);
 
   });
+  showForecast();
 }
 
 $(document).ready(function(){
