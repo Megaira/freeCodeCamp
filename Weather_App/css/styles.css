@@ -94,6 +94,7 @@ label {
 .current .current-container .day-date h2 {
   font-size: 40px;
   font-weight: bold;
+  text-transform: uppercase;
 }
 .current .current-container .day-date h2 small {
   font-size: 18px;
@@ -148,6 +149,9 @@ label {
 .current .current-container .high-low::after {
   clear: both;
 }
+/* Forecast Block */
+/* --> css/forecast_styles.css */
+/* Forecast Block */
 
 footer {
   position: absolute;

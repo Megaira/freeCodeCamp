@@ -1,7 +1,7 @@
 // WEEKDAY AND DATE:
-// console.log(time);
-// var dateCurrent = new Date(time * 1000);
-// console.log(dateCurrent);
+
+var weekdays = ['Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat']; // in JS .getDay() Sunday is 0
+var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 
 function showForecast( position ) {
@@ -16,17 +16,8 @@ function showForecast( position ) {
     var currentDate = currentDateTime.getDate();
     var currentMonthId = currentDateTime.getMonth();
 
-    var weekdays = ['Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat']; // in JS .getDay() Sunday is 0
-    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-
     var currentWeekday = weekdays[currentWeekdayId];
     var currentMonth = months[currentMonthId];
-    console.log(currentDateTime);
-    console.log(currentWeekdayId);
-    console.log(currentWeekday);
-    console.log(currentDate);
-    console.log(currentMonthId);
-    console.log(currentMonth);
     $('.day-date').html('<h2>' + currentWeekday + ' <small>' + currentDate + '' + currentMonth + '</small></h2>');
 
     // Temperature Min and Max of current Day:
@@ -48,31 +39,41 @@ function showForecast( position ) {
     var forecastId;
     var forecastTemp;
 
+    var forecastDateTime;
+    var forecastWeekdayId;
+    var forecastDate;
+    var forecastMonthId;
+    //
+    var forecastWeekday;
+    var forecastMonth;
+
+
     for (var i = 1; i < numberOfDays.length; i++) {
       // Weekday:
       forecastTimestamp = numberOfDays[i].dt;
-      var dateForecast = new Date(forecastTimestamp * 1000);
-      console.log(forecastTimestamp);
-      console.log(dateForecast);
-
+      forecastDateTime = new Date(forecastTimestamp * 1000);
+      forecastWeekdayId = forecastDateTime.getDay();
+      forecastDate = forecastDateTime.getDate();
+      forecastMonthId = forecastDateTime.getMonth();
+      forecastWeekday = weekdays[forecastWeekdayId];
+      forecastMonth = months[forecastMonthId];
 
       forecastStatus = numberOfDays[i].weather[0].description;
-      // console.log(forecastStatus);
       forecastId = numberOfDays[i].weather[0].id;
-      // console.log(forecastId);
       forecastTemp = Math.floor(numberOfDays[i].temp.day);
-      // console.log(forecastTemp);
 
       showForecast();
     }
 
     function showForecast() {
       // Show Weekday
+      $('.forecast-day').append('<th>' + forecastWeekday + '</th>');
+
       // Show Icon
       var forecastIcon;
       var forecastPrefix = 'wi wi-owm-'
       forecastIcon = forecastPrefix + forecastId;
-      // console.log(forecastIcon);
+
       var forecastIconCell = '<td><i class="' + forecastIcon + '"></i></td>'
       $('.forecast-icon').append(forecastIconCell);
       // Show Temperature
@@ -87,6 +88,7 @@ function showForecast( position ) {
     }
 
     $('input[type=checkbox]').on('click', function() {
+      $('.forecast-day').empty();
       $('.forecast-icon').empty();
       $('.forecast-temp').empty();
     });
