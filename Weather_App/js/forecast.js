@@ -44,7 +44,7 @@ function getForecast( position ) {
 
     currentWeekday = weekdays[currentWeekdayId];
     currentMonth = months[currentMonthId];
-    $('.day-date').html('<h2>' + currentWeekday + '</h2><span>' + currentDate + '' + currentMonth + '</span>');
+    $('.day-date').html('<h2>' + currentWeekday + '</h2><span>' + currentDate + ' ' + currentMonth + '</span>');
 
     // Temperature Min and Max of current Day:
     currentHigh = Math.floor(forecast.list[0].temp.max);

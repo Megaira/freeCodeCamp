@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,900');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
 html {
   position: relative; /* for footer positioning */
   min-height: 100%;
@@ -6,19 +6,13 @@ html {
 body {
   margin-bottom: 50px; /* footer height */
   font-family: 'Lato', sans-serif;
-  /*background-color: #f7c525;*/
-  color: #333;
-  /*color: #fff;*/
+  color: #fff;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, .1);
 }
 .current {
-  /*background: -o-linear-gradient(#faeaa0, #f9db70);
-  background: -moz-linear-gradient(#faeaa0, #f9db70);
-  background: -webkit-linear-gradient(#faeaa0, #f9db70);
-  background: linear-gradient(#faeaa0, #f9db70);*/
-  background-color: #fff;
   padding: 15px;
   margin-bottom: 3px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12), 0 3px 6px rgba(0,0,0,0.24);
 }
 /* Toggle Button for Unit change */
 .current .switch {
@@ -52,7 +46,6 @@ label {
   padding: 2px;
   width: 60px;
   height: 30px;
-  background-color: #ddd;
   border-radius: 30px;
 }
 .toggle-u-round + label::before,
@@ -66,7 +59,7 @@ label {
 }
 .toggle-u-round + label::before {
   right: 1px;
-  background-color: #f1f1f1;
+  background-color: rgba(0, 0, 0, .3);
   border-radius: 30px;
   transition: background .4s;
 }
@@ -78,7 +71,7 @@ label {
   transition: margin .4s;
 }
 .toggle-u-round:checked + label::before {
-  background-color: rgba(0, 0, 0, .1);
+  background-color: rgba(255, 255, 255, .5);
 }
 .toggle-u-round:checked + label::after {
   margin-left: 30px;
@@ -97,6 +90,8 @@ label {
   font-size: 40px;
   font-weight: bold;
   text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
 .current .current-container .day-date span {
   font-size: 18px;
@@ -114,13 +109,7 @@ label {
   text-align: center;
 }
 .current .current-container .weather-icon i {
-  font-size: 56px;
-}
-
-.current .current-container .weather-icon img {
-  margin: 0 auto;
-  display: block;
-  width: 90px;
+  font-size: 60px;
 }
 .current .current-container .weather-status {
   text-align: center;
@@ -129,6 +118,8 @@ label {
 }
 .current .current-container .weather-status p {
   margin: 0;
+  font-size: 18px;
+  /*padding-bottom: 10px;*/
 }
 .current .current-container .temperature {
   text-align: center;
@@ -137,20 +128,16 @@ label {
 }
 .current .current-container .high-low {
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
-  width: 120px;
+  width: 140px;
   margin: 0 auto;
+  padding-top: 10px;
 }
-.current .current-container .high-low .high {
-  float: left;
+.current .current-container .high-low span {
+  padding: 0 10px;
 }
-.current .current-container .high-low .low {
-  float: right;
-}
-.current .current-container .high-low::after {
-  clear: both;
-}
+
 /* Forecast Block */
 /* --> css/forecast_styles.css */
 /* Forecast Block */

@@ -48,11 +48,14 @@ function showWeather( position ) {
     // Weather icon:
     var icon; // icon = prefix + weatherId
     var prefix = 'wi wi-owm-';
+    var weatherColourCode;
     // Change icon prefix according to daytime:
     if (sunrise < time && sunset > time) {
       prefix = prefix + 'day-';
+      weatherColourCode = 'day';
     } else {
       prefix = prefix + 'night-';
+      weatherColourCode = 'night';
     }
     icon = prefix + weatherId;
     // Add icon class to <i>:
@@ -60,38 +63,27 @@ function showWeather( position ) {
 
     // Change background-color:
     // Get colour code with one digit from weatherId
-    var weatherColourCode = Math.floor(weatherId/100);
+    console.log(weatherColourCode);
     var weatherColour; // HEX colour
-    // 8 weather condition groups - 8 cases:
+    var weatherBgColour; // HEX colour
+    // Change Colours according to daytime:
     switch (weatherColourCode) {
-      case 2:
-        weatherColour = '#512DA8';
+      case 'day':
+        weatherColour = '#FDD835';
+        weatherBgColour = '#FBC02D';
         break;
-      case 3:
-        weatherColour = '#E91E63';
-        break;
-      case 5:
-        weatherColour = '#00BCD4';
-        break;
-      case 6:
-        weatherColour = '#8e44ad';
-        break;
-      case 7:
-        weatherColour = '#607D8B';
-        break;
-      case 8:
-        // weatherColour = '#FFD54F';
-        weatherColour = '#f7c525';
-        break;
-      case 9:
-        weatherColour = '#00E676';
+      case 'night':
+        weatherColour = '#4A2D68';
+        weatherBgColour = '#38224E';
         break;
       default:
-        weatherColour = '#CDDC39';
+        weatherColour = '#AD1457';
+        weatherBgColour = '#880E4F';
+        break;
     }
     // Change font color on .current container:
-    $('body').css('background-color', weatherColour);
-    $('.current').css('color', weatherColour);
+    $('body').css('background-color', weatherBgColour);
+    $('.current').css('background-color', weatherColour);
 
     // SHOW WEATHER CONDITIONS:
     // Get weather condition description & write it to .weather-status

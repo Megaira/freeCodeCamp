@@ -1,27 +1,50 @@
 .forecast {
-  /*background-color: #f7c525;*/
   color: #fff;
 }
-.forecast .forecast-large {
-  padding-top: 40px;
-  padding-bottom: 15px;
+.forecast .forecast-small {
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
-
-/* Small screen table */
-
-/* Large screen table */
-.table > thead > tr > th,
-.table > tbody > tr > th,
-.table > thead > tr > td,
-.table > tbody > tr > td,
-.table > tfoot > tr > td {
-  padding: 8px;
-  line-height: 1.42857143;
-  vertical-align: top;
+.forecast .forecast-large {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.forecast .table {}
+.forecast .table thead tr th,
+.forecast .table thead tr td,
+.forecast .table tbody tr th,
+.forecast .table tbody tr td {
   border: 0;
   text-align: center;
 }
-.table > thead > tr > th {
-  vertical-align: bottom;
-  /*border-bottom: 2px solid #ddd;*/
+/* Small screen table */
+.forecast .forecast-small {}
+.forecast .forecast-small .table {}
+.forecast .forecast-small .table .forecast-day th {
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.forecast .forecast-small .table .forecast-icon td {}
+.forecast .forecast-small .table .forecast-icon td i {
+  font-size: 32px;
+}
+.forecast .forecast-small .table .forecast-temp td span {
+  font-size: 22px;
+}
+
+/* Large screen table */
+.forecast .forecast-large {}
+.forecast .forecast-large .table {}
+.forecast .forecast-large .table .forecast-day th {
+  font-size: 26px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.forecast .forecast-large .table .forecast-icon td {}
+.forecast .forecast-large .table .forecast-icon td i {
+  font-size: 36px;
+}
+.forecast .forecast-large .table .forecast-temp td span {
+  font-size: 26px;
 }
