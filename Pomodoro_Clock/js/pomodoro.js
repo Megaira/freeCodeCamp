@@ -5,35 +5,53 @@ var sessionLength;
 // Functions:
 
 // Variables for Timer:
-var minutesInit = 2;
-var secondsInit = 0;
+var minutesInit = 1;
+// var secondsInit = 0;
 // Counting variable for time:
 var time = minutesInit * 60 * 1000;
+// var time = minutesInit * 60 * 1000;
 // console.log(time);
+var mode; // state of timer (none, pomodoro, break)
 
 var minutes;
 var seconds;
+// var seconds;
 
 var minLog;
 var secLog;
-// console.log(minutes, seconds);
+
+function setTimer() {
+  // if (pomodoroOn) {
+  //   time = sessionLength * 60 * 1000;
+  // } else if (breakOn) {
+  //   time = breakLength * 60 * 1000;
+  // } else {
+  //   time = minutesInit * 60 * 1000;
+  // }
+}
 
 // Start Pomodoro Timer:
 function startTimer() {
-  var countdownSession = setInterval(function() {
+  mode = 'pomodoro';
+
+  var c = setInterval( countdown, 1000)
+  // console.log(time);
+  function countdown(){
+    if (time <= 0) {
+      clearInterval( countdown );
+      // Play sound
+      return;
+    }
+    time -= 1000;
     minutes = Math.floor((time / 1000 / 60) % 60);
     seconds = (time / 1000) % 60;
-
-    if (time <= 0) {
-      clearInterval(countdownSession);
-    }
-    console.log(time);
     console.log(minutes + ':' + seconds);
-    timerLogFormat(minutes,seconds);
-    time -= 1000;
-  }, 1000);
+    timerLogFormat();
+  }
 };
-
+function stopTimer() {
+  clearInterval( countdown );
+}
 // Set initial values for break- and session-length:
 breakLength = 5;
 sessionLength = 25;
@@ -42,6 +60,7 @@ function customBreakTime(){
   $('.break-plus').on('click', function(){
     breakLength += 1;
     $('.break-minutes').text(breakLength);
+    setTimer();
   });
   $('.break-minus').on('click', function(){
     breakLength -= 1;
@@ -49,6 +68,7 @@ function customBreakTime(){
       breakLength = 0;
     };
     $('.break-minutes').text(breakLength);
+    setTimer();
   });
 };
 
@@ -56,6 +76,7 @@ function customSessionTime(){
   $('.session-plus').on('click', function(){
     sessionLength += 1;
     $('.session-minutes').text(sessionLength);
+    $('.timer-minutes').text(sessionLength);
   });
   $('.session-minus').on('click', function(){
     sessionLength -= 1;
@@ -63,14 +84,12 @@ function customSessionTime(){
       sessionLength = 0;
     };
     $('.session-minutes').text(sessionLength);
+    $('.timer-minutes').text(sessionLength);
   });
 };
 
 // Set format for timer output:
 function timerLogFormat() {
-  // minutes = minutesInit;
-  // seconds = secondsInit;
-
   if (minutes < 10) {
     minLog = '0' + minutes.toString();
   } else {
@@ -89,7 +108,9 @@ function timerLogFormat() {
 function initialTime() {
   $('.break-minutes').text(breakLength);
   $('.session-minutes').text(sessionLength);
-  // timerLogFormat();
+  $('.timer-minutes').text(sessionLength);
+  $('.timer-seconds').text('00');
+
   customBreakTime();
   customSessionTime();
 };
@@ -99,5 +120,7 @@ function initialTime() {
 
 $(document).ready(function() {
   initialTime();
+  setTimer();
   $('.start').on('click', startTimer);
+  $('.reset').on('click', stopTimer);
 });
