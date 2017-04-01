@@ -63,7 +63,6 @@ function showWeather( position ) {
 
     // Change background-color:
     // Get colour code with one digit from weatherId
-    console.log(weatherColourCode);
     var weatherColour; // HEX colour
     var weatherBgColour; // HEX colour
     // Change Colours according to daytime:
@@ -113,6 +112,10 @@ $(document).ready(function(){
         longitude: loc[1]
       };
       returnPositionVaiIp( coords );
+    }, {
+      maximumAge:0,
+      timeout:3000,
+      enableHighAccuracy: true
     })
   });
 

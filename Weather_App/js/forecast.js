@@ -62,17 +62,17 @@ function getForecast( position ) {
 };
 
 // Check Screen Size and call appropriate function:
-function screenSizeDetection() {
+function screenSizeDetection(numberOfDays) {
   var windowWith = $(window).width();;
   if (windowWith < 768) {
-    forecastSmallScreen();
+    forecastSmallScreen(numberOfDays);
   } else {
-    forecastLargeScreen();
+    forecastLargeScreen(numberOfDays);
   }
 };
 
 // Number of Days on Small Screens:
-function forecastSmallScreen() {
+function forecastSmallScreen(numberOfDays) {
   emptyContainers();
   for (var i = 1; i < 5; i++) {
     forecastInfos(i);
@@ -80,7 +80,7 @@ function forecastSmallScreen() {
   }
 };
 // Number of Days on Large Screens:
-function forecastLargeScreen() {
+function forecastLargeScreen(numberOfDays) {
   emptyContainers();
   for (var i = 1; i < numberOfDays.length; i++) {
     forecastInfos(i);
