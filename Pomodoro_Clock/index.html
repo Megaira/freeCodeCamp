@@ -9,6 +9,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/pomodoro-clock.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,35 +19,68 @@
     <![endif]-->
   </head>
   <body>
+    <header>
+      <span>P</span><img src="images/Logomakr_75aZoL.png"><span>modoro</span>
+    </header>
     <div class="container">
-      <div id="break">
-        <h4>Break length</h4>
-        <button class="btn btn-default break-plus">+</button>
-        <span class="break-minutes"></span>
-        <button class="btn btn-default break-minus">-</button>
+      <div class="row">
+        <div class="" id="clock-settings">
+          <h4>Settings</h4>
+          <div class="settings">
+            <div id="session">
+              <h5>Work Interval <i class="fa fa-coffee" aria-hidden="true"></i></h5>
+              <button class="btn btn-default session-plus">+</button>
+              <span class="session-minutes"></span>
+              <button class="btn btn-default session-minus">-</button>
+            </div>
+            <div id="short-break">
+              <h5>Short Break <i class="fa fa-coffee" aria-hidden="true"></i></h5>
+              <button class="btn btn-default shortbreak-plus">+</button>
+              <span class="shortbreak-minutes"></span>
+              <button class="btn btn-default shortbreak-minus">-</button>
+            </div>
+            <div id="long-break">
+              <h5>Long Break <i class="fa fa-coffee" aria-hidden="true"></i></h5>
+              <button class="btn btn-default longbreak-plus">+</button>
+              <span class="longbreak-minutes"></span>
+              <button class="btn btn-default longbreak-minus">-</button>
+            </div>
+            <div id="num-sessions">
+              <h5>Intervals <i class="fa fa-coffee" aria-hidden="true"></i></h5>
+              <button class="btn btn-default num-sessions-plus">+</button>
+              <span class="num-sessions"></span>
+              <button class="btn btn-default num-sessions-minus">-</button>
+            </div>
+          </div>
+        </div>
+        <div class="" id="clock">
+          <div class="status"></div>
+          <div class="canvas">
+            <canvas id="clock-canvas" width="300px" height="300px"></canvas>
+          </div>
+          <div id="controls">
+            <button class="btn btn-danger"><i class="fa fa-play fa-1x" aria-hidden="true"></i></button>
+          </div>
+        </div>
       </div>
-      <div id="session">
-        <h4>Session length</h4>
-        <button class="btn btn-default session-plus">+</button>
-        <span class="session-minutes"></span>
-        <button class="btn btn-default session-minus">-</button>
-      </div>
-      <div id="timer">
-        <h3>Pomodoro</h3>
-        <p><span class="timer-minutes"></span>:<span class="timer-seconds"></span></p>
-      </div>
-      <button class="btn btn-success start">Start</button>
-      <button class="btn btn-primary pause">Pause</button>
-      <button class="btn btn-danger reset">Stop/Reset</button>
-
-
     </div>
-
+    <div class="container">
+      <div <div class="about">
+        <h4>About</h4>
+        <p>The Pomodoro Technique is a popular and effective time-management life hack.</p>
+        <p>When faced with any large task or series of tasks, break the work down into short, timed intervals (called "Pomodoros") that are spaced out by short breaks. This trains your brain to focus for short periods and helps you stay on top of deadlines or constantly-refilling inboxes.<a href="http://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro Technique</a></p>
+        <p>Graphics Made With: <a href="http://logomakr.com">Logomakr.com</a></p>
+      </div>
+    </div>
+    <footer>
+      <div class="container"><p>Made with <i class="fa fa-coffee" aria-hidden="true"></i> and <i class="fa fa-music" aria-hidden="true"></i> by mediasittich. </p></div>
+    </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <!-- Include custom JS -->
-    <script src="js/pomodoro.js"></script>
+    <!-- Custom scripts -->
+    <script src="js/pomodoro-clock.js"></script>
+    <script src="js/settings.js"></script>
   </body>
 </html>
