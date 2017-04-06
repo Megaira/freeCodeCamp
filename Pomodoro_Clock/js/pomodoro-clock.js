@@ -1,11 +1,4 @@
 // Global Variables:
-// Length of work interval, sessions and number of intervals before long break (default or user input):
-var workInterval = 25;
-var shortBreak = 5;
-var longBreak = 15;
-var intervalNum = 4;
-var clockRunning = false; // initial state of timer
-
 // CANVAS:
 var canvas = document.getElementById('clock-canvas');
 var ctx = canvas.getContext('2d');
@@ -45,13 +38,10 @@ function initCanvas() {
 // TIMER:
 // Initial timer settings on page load (default):
 function initialTime() {
-  $('.session-minutes').text(workInterval);
-  $('.shortbreak-minutes').text(shortBreak);
-  $('.longbreak-minutes').text(longBreak);
-  $('.num-sessions').text(intervalNum);
-
-  // customBreakTime();
-  // customSessionTime();
+  $('.session-minutes').text(Clock.workInterval);
+  $('.shortbreak-minutes').text(Clock.shortBreak);
+  $('.longbreak-minutes').text(Clock.longBreak);
+  $('.num-sessions').text(Clock.intervalNum);
 };
 // DOCUMENT READY:
 $(document).ready(function() {
