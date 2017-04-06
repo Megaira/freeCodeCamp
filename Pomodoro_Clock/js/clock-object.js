@@ -6,6 +6,7 @@ var Clock = {
   running: false,
   intervalCount: 0,
   status: 'ready', // 'pomodoro', 'coffee', 'book', 'pause'
+  
   setClock: function(timerSetting){
     console.log(Clock.workInterval, Clock.shortBreak, Clock.longBreak, Clock.intervalNum);
   },
@@ -13,6 +14,8 @@ var Clock = {
     Clock['running'] = true;
     Clock['intervalCount'] += 1;
     Clock['status'] = 'pomodoro';
+    // Get start time for calculation
+
     // Hide .start button
     $('.start').removeClass('show').addClass('hide');
     // Show .pause and .stop button
@@ -53,6 +56,7 @@ var Clock = {
   },
   updateClock: function() {
     // Calculate:
+
   }
 }
 console.log(Clock);
