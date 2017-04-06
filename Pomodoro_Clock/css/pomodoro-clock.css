@@ -73,6 +73,12 @@ header img {
   /*padding: 10px 13px;*/
   border-radius: 100%;
 }
+.hide {
+  display: none;
+}
+.show {
+  display: inline-block!important;
+}
 /****************
   ABOUT
 *****************/
