@@ -6,7 +6,7 @@ var Clock = {
   running: false,
   intervalCount: 0,
   status: 'ready', // 'pomodoro', 'coffee', 'book', 'pause'
-  
+
   setClock: function(timerSetting){
     console.log(Clock.workInterval, Clock.shortBreak, Clock.longBreak, Clock.intervalNum);
   },
@@ -47,8 +47,9 @@ var Clock = {
     Clock['running'] = false;
     Clock['intervalCount'] = 0;
     Clock['status'] = 'ready';
-    // Hide .pause and .stop button
+    // Hide .pause, .resume and .stop button
     $('.pause').removeClass('show').addClass('hide');
+    $('.resume').removeClass('show').addClass('hide');
     $('.stop').removeClass('show').addClass('hide');
     // Show .start button
     $('.start').removeClass('hide').addClass('show');
