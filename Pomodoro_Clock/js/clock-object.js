@@ -6,6 +6,9 @@ var Clock = {
   running: false,
   intervalCount: 0,
   status: 'ready', // 'pomodoro', 'coffee', 'book', 'pause'
+  // Properties for updateClock:
+  startTime: 0,
+  duration: 0,
 
   setClock: function(timerSetting){
     console.log(Clock.workInterval, Clock.shortBreak, Clock.longBreak, Clock.intervalNum);
@@ -22,8 +25,11 @@ var Clock = {
     $('.pause').removeClass('hide').addClass('show');
     $('.stop').removeClass('hide').addClass('show');
 
+    Clock.startTime = Date.now();
+    console.log(Clock.startTime);
     Clock.updateClock();
     console.log(Clock);
+
   },
   pauseClock: function() {
     Clock['running'] = false;
@@ -41,7 +47,11 @@ var Clock = {
     $('.resume').removeClass('show').addClass('hide');
     // Show .pause button
     $('.pause').removeClass('hide').addClass('show');
+
+    Clock.startTime = Date.now();
     console.log(Clock);
+    console.log(Clock.startTime);
+    Clock.updateClock();
   },
   stopClock: function() {
     Clock['running'] = false;
@@ -56,7 +66,26 @@ var Clock = {
     console.log(Clock);
   },
   updateClock: function() {
+    // Conditionnals and cases:
+
     // Calculate:
+    var interval = setInterval(function () {
+      Clock.duration = 25;
+      Clock.duration = Clock.duration * 60 * 1000;
+      var currentTime = Date.now();
+      var passedTime = currentTime - Clock.startTime;
+      var remainingTime = Clock.duration - passedTime;
+
+      var minutes = Math.floor((remainingTime / 1000 / 60) % 60);
+      var seconds = Math.round(remainingTime / 1000) % 60;
+
+      console.log(Clock.startTime);
+      console.log(currentTime);
+      console.log(passedTime);
+      console.log(remainingTime);
+      console.log(minutes + ':' + seconds);
+    }, 1000);
+
 
   }
 }
