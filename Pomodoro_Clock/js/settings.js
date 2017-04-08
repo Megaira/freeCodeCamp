@@ -14,7 +14,7 @@ var longBreakInput = $('.longbreak-minutes');
 var intervalNumInput = $('.num-sessions');
 
 // Canvas (needs function to write on canvas - later):
-var clockTimer = $('#clock-canvas');
+var clockTimer = $('.minutes');
 
 // Take user input and update timer lengths in Settings:
 function customSettings(button1, button2, key, timerSetting, container) {
