@@ -40,7 +40,7 @@
 // Initial timer settings on page load (default):
 function initialTime() {
   $('.session-minutes').text(Clock.workInterval);
-  $('.minutes').text(Clock.workInterval);
+  // $('.minutes').text(Clock.workInterval);
   $('.shortbreak-minutes').text(Clock.shortBreak);
   $('.longbreak-minutes').text(Clock.longBreak);
   $('.num-sessions').text(Clock.intervalNum);

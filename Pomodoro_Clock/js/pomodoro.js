@@ -1,126 +1,83 @@
-// Variables:
-// Variables for break-, session-length (default or user input):
-var breakLength;
-var sessionLength;
-// Functions:
+var workInterval = 2;
+var shortBreak = 5;
+var longBreak = 15;
+var intervalCount = 4;
 
-// Variables for Timer:
-var minutesInit = 1;
-// var secondsInit = 0;
-// Counting variable for time:
-var time = minutesInit * 60 * 1000;
-// var time = minutesInit * 60 * 1000;
-// console.log(time);
-var mode; // state of timer (none, pomodoro, break)
+var time = 2;
+// Set time according to status:
+var duration = time * 60 * 1000;
 
-var minutes;
-var seconds;
-// var seconds;
+var Clock = {
+  remainingTime: duration,
+  intervalCount: intervalCount,
+  running: false,
 
-var minLog;
-var secLog;
-
-function setTimer() {
-  // if (pomodoroOn) {
-  //   time = sessionLength * 60 * 1000;
-  // } else if (breakOn) {
-  //   time = breakLength * 60 * 1000;
-  // } else {
-  //   time = minutesInit * 60 * 1000;
-  // }
-}
-
-// Start Pomodoro Timer:
-function startTimer() {
-  mode = 'pomodoro';
-
-  var c = setInterval( countdown, 1000)
-  // console.log(time);
-  function countdown(){
-    if (time <= 0) {
-      clearInterval( countdown );
-      // Play sound
+  setClock: function() {
+    Clock.displayClock();
+    console.log(Clock.intervalCount);
+    console.log(Clock.running);
+  },
+  timeIsUp: function() {},
+  timer: function() {
+    Clock.interval = setInterval(Clock.updateClock, 1000);
+    console.log(Clock.intervalCount);
+  },
+  updateClock: function() {
+    if (Clock.remainingTime <= 0) {
       return;
     }
-    time -= 1000;
-    minutes = Math.floor((time / 1000 / 60) % 60);
-    seconds = (time / 1000) % 60;
-    console.log(minutes + ':' + seconds);
-    timerLogFormat();
+    Clock.currentTime = Date.now();
+    var passedTime = Clock.currentTime - Clock.startTime;
+    Clock.startTime = Clock.currentTime;
+    Clock.remainingTime -= passedTime;
+
+    Clock.displayClock();
+  },
+  displayClock: function() {
+    Clock.minutes = Math.floor((Clock.remainingTime / 1000 / 60) % 60);
+    Clock.seconds = Math.round(Clock.remainingTime / 1000) % 60;
+
+    // Format with leading zeros:
+    function displayFormat(val) {
+      return ('0' + val).slice(- 2);
+    }
+    $('.minutes').text(displayFormat(Clock.minutes));
+    $('.seconds').text(displayFormat(Clock.seconds));
+  },
+  // Clock controls:
+  startClock: function() {
+    Clock.startTime = Date.now();
+    Clock.intervalCount -= 1;
+    Clock.running = true;
+    Clock.timer();
+  },
+  pauseClock: function() {
+    clearInterval(Clock.interval);
+    delete Clock.interval;
+    console.log(Clock.remainingTime);
+    console.log(Clock.intervalCount);
+    Clock.running = false;
+    Clock.displayClock();
+  },
+  stopClock: function() {
+    clearInterval(Clock.interval);
+    delete Clock.interval;
+    Clock.remainingTime = duration;
+    Clock.intervalCount = intervalCount;
+    Clock.running = false;
+
+    Clock.setClock();
+    Clock.time();
+  },
+  time: function() {
+    console.log(Clock.remainingTime);
   }
-};
-function stopTimer() {
-  clearInterval( countdown );
 }
-// Set initial values for break- and session-length:
-breakLength = 5;
-sessionLength = 25;
-// User input for break and session length:
-function customBreakTime(){
-  $('.break-plus').on('click', function(){
-    breakLength += 1;
-    $('.break-minutes').text(breakLength);
-    setTimer();
-  });
-  $('.break-minus').on('click', function(){
-    breakLength -= 1;
-    if (breakLength <= 0) {
-      breakLength = 0;
-    };
-    $('.break-minutes').text(breakLength);
-    setTimer();
-  });
-};
-
-function customSessionTime(){
-  $('.session-plus').on('click', function(){
-    sessionLength += 1;
-    $('.session-minutes').text(sessionLength);
-    $('.timer-minutes').text(sessionLength);
-  });
-  $('.session-minus').on('click', function(){
-    sessionLength -= 1;
-    if (sessionLength <= 0) {
-      sessionLength = 0;
-    };
-    $('.session-minutes').text(sessionLength);
-    $('.timer-minutes').text(sessionLength);
-  });
-};
-
-// Set format for timer output:
-function timerLogFormat() {
-  if (minutes < 10) {
-    minLog = '0' + minutes.toString();
-  } else {
-    minLog = minutes.toString();
-  }
-  if (seconds < 10) {
-    secLog = '0' + seconds.toString();
-  } else {
-    secLog = seconds.toString();
-  }
-  $('.timer-minutes').text(minLog);
-  $('.timer-seconds').text(secLog);
-};
-
-// Initialize clock:
-function initialTime() {
-  $('.break-minutes').text(breakLength);
-  $('.session-minutes').text(sessionLength);
-  $('.timer-minutes').text(sessionLength);
-  $('.timer-seconds').text('00');
-
-  customBreakTime();
-  customSessionTime();
-};
-
-
-
+console.log(Clock.remainingTime);
 
 $(document).ready(function() {
-  initialTime();
-  setTimer();
-  $('.start').on('click', startTimer);
-  $('.reset').on('click', stopTimer);
+  Clock.setClock();
+  $('.start').on('click', function() { Clock.startClock() });
+  $('.pause').on('click', function() { Clock.pauseClock() });
+  $('.stop').on('click', function() { Clock.stopClock() });
 });

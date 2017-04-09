@@ -1,5 +1,5 @@
 var Clock = {
-  workInterval: 25,
+  workInterval: 1,
   shortBreak: 5,
   longBreak: 15,
   intervalCount: 4,
@@ -9,27 +9,32 @@ var Clock = {
   // Properties for updateClock:
   startTime: 0,
   duration: 0,
+  minutes: 0,
+  seconds: 0,
 
   setClock: function(timerSetting){
+    Clock.minutes = Clock.workInterval;
+    Clock.seconds;
+    Clock.minutes = Clock.logFormat(Clock.minutes);
+    Clock.seconds = Clock.logFormat(Clock.seconds);
+    $('.minutes').text(Clock.minutes);
+    $('.seconds').text(Clock.seconds);
     console.log(Clock.workInterval, Clock.shortBreak, Clock.longBreak, Clock.intervalCount);
   },
   startClock: function() {
     Clock['running'] = true;
     Clock['intervalCount'] -= 1;
     Clock['status'] = 'pomodoro';
-    // Get start time for calculation
 
     // Hide .start button
     $('.start').removeClass('show').addClass('hide');
     // Show .pause and .stop button
     $('.pause').removeClass('hide').addClass('show');
     $('.stop').removeClass('hide').addClass('show');
-
+    // Get start time for calculation
     Clock.startTime = Date.now();
-    // console.log(Clock.startTime);
-    Clock.updateClock();
-    // console.log(Clock);
 
+    Clock.updateClock();
   },
   pauseClock: function() {
     Clock['running'] = false;
@@ -67,7 +72,6 @@ var Clock = {
   },
   updateClock: function() {
     Clock.duration = Clock.workInterval; // festlegen durch 'status'
-    // Clock.duration = Clock.duration * 60 * 1000;
     // Conditionnals and status cases:
 
     // Calculate:
@@ -75,35 +79,69 @@ var Clock = {
       var currentTime = Date.now();
       var passedTime = currentTime - Clock.startTime; // dt
       var remainingTime = Clock.duration * 60 * 1000;
-
+      remainingTime -= passedTime;
       // time left?
-      if (remainingTime > 0) {
-        // yes: reduce by dt
-        remainingTime -= passedTime;
-      } else { // no:
+      if (remainingTime <= 0) { // no:
+        console.log(remainingTime);
+        remainingTime = 0;
+        console.log("time's up!");
         // Check status and intervalCount: switch(Clock.status)
-        // case 'pomodoro': (default? mit > 0)
-          // if intervalCount > 0: change status = coffee, duration = shortBreak, remainingTime -= passedTime
-          // if intervalCount == 0: change status = book, duration = longBreak, remainingTime -= passedTime
-        // case 'coffee': change status = pomodoro, duration = workInterval, intervalCount -=1, remainingTime -= passedTime
-        // case 'book': change status = pomodoro, duration = workInterval, intervalCount = Clock.intervalCount, remainingTime -= passedTime
+        Clock.status = 'coffee';
+        Clock.duration = Clock.shortBreak;
+
       }
 
-      var minutes = Math.floor((remainingTime / 1000 / 60) % 60);
-      var seconds = Math.round(remainingTime / 1000) % 60;
+      Clock.minutes = Math.floor((remainingTime / 1000 / 60) % 60);
+      Clock.seconds = Math.round(remainingTime / 1000) % 60;
 
-      console.log(minutes + ':' + seconds);
+      Clock.minutes = Clock.logFormat(Clock.minutes);
+      Clock.seconds = Clock.logFormat(Clock.seconds);
+
+      console.log(Clock.minutes + ':' + Clock.seconds);
+      console.log(Clock.duration);
+      console.log(remainingTime);
       console.log(Clock.status);
-      console.log(Clock.intervalCount);
+      // console.log(Clock.intervalCount);
 
-      $('.minutes').text(minutes);
-      $('.seconds').text(seconds);
+      $('.minutes').text(Clock.minutes);
+      $('.seconds').text(Clock.seconds);
     }, 1000);
-
-
+  },
+  logFormat: function(val) {
+    return ('0' + val).slice(- 2);
   }
 }
+// switch (Clock.status) {
+//   case 'pomodoro':
+//     if (Clock.intervalCount > 0) {
+//       Clock.status = 'coffee';
+//       Clock.duration = Clock.shortBreak;
+//     } else {
+//       Clock.status = 'book';
+//       Clock.duration = Clock.longBreak;
+//     }
+//     break;
+//   case 'coffee':
+//     Clock.status = 'pomodoro';
+//     Clock.duration = Clock.workInterval
+//     break;
+//   case 'book':
+//     Clock.status = 'pomodoro';
+//     Clock.duration = Clock.workInterval
+//     break;
+//   // default:
+// }
+
+// case 'pomodoro': (default? mit > 0)
+  // if intervalCount > 0: change status = coffee, duration = shortBreak, remainingTime -= passedTime
+  // if intervalCount == 0: change status = book, duration = longBreak, remainingTime -= passedTime
+// case 'coffee': change status = pomodoro, duration = workInterval, intervalCount -=1, remainingTime -= passedTime
+// case 'book': change status = pomodoro, duration = workInterval, intervalCount = Clock.intervalCount, remainingTime -= passedTime
+
+
+
 console.log(Clock);
+Clock.setClock();
 $('.start').on('click', function() { Clock.startClock() });
 $('.pause').on('click', function() { Clock.pauseClock() });
 $('.resume').on('click', function() { Clock.resumeClock() });

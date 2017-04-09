@@ -24,6 +24,21 @@
     </header>
     <div class="container">
       <div class="row">
+
+        <div class="" id="clock">
+          <div class="status"></div>
+          <div class="timer">
+            <span class="minutes"></span>:<span class="seconds"></span>
+            <!-- <canvas id="clock-canvas" width="300px" height="300px"></canvas> -->
+          </div>
+          <div id="controls">
+            <button class="btn btn-danger start"><i class="fa fa-play fa-1x" aria-hidden="true"></i></button>
+            <button class="btn btn-danger pause"><i class="fa fa-pause fa-1x" aria-hidden="true"></i></button>
+            <!-- <button class="btn btn-success resume"><i class="fa fa-play fa-1x" aria-hidden="true"></i></button> -->
+            <button class="btn btn-danger stop"><i class="fa fa-stop fa-1x" aria-hidden="true"></i></button>
+          </div>
+        </div>
+
         <div class="" id="clock-settings">
           <h4>Settings</h4>
           <div class="settings">
@@ -53,19 +68,7 @@
             </div>
           </div>
         </div>
-        <div class="" id="clock">
-          <div class="status"></div>
-          <div class="timer">
-            <span class="minutes"></span>:<span class="seconds"></span>
-            <!-- <canvas id="clock-canvas" width="300px" height="300px"></canvas> -->
-          </div>
-          <div id="controls">
-            <button class="btn btn-danger start show"><i class="fa fa-play fa-1x" aria-hidden="true"></i></button>
-            <button class="btn btn-danger pause hide"><i class="fa fa-pause fa-1x" aria-hidden="true"></i></button>
-            <button class="btn btn-success resume hide"><i class="fa fa-play fa-1x" aria-hidden="true"></i></button>
-            <button class="btn btn-danger stop hide"><i class="fa fa-stop fa-1x" aria-hidden="true"></i></button>
-          </div>
-        </div>
+
       </div>
     </div>
     <div class="container">
@@ -84,9 +87,10 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- Custom scripts -->
-    <script src="js/clock-object.js"></script>
+    <!-- <script src="js/clock-object.js"></script>
     <script src="js/pomodoro-clock.js"></script>
-    <script src="js/settings.js"></script>
+    <script src="js/settings.js"></script> -->
+    <script src="js/pomodoro.js"></script>
 
   </body>
 </html>
