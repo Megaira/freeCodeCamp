@@ -52,22 +52,28 @@ header img {
 /*****************
   CLOCK
 *****************/
-#clock {}
+#clock {
+  text-align: center;
+}
 #clock .status{
   height: 42px;
 }
-#clock .canvas {
+#clock .timer {
+  display: inline-block;
+  /*margin: 0 auto;*/
+}
+/*#clock .canvas {
+  text-align: center;
   margin: 0 auto;
 }
 #clock .canvas canvas {
-  /*border: 1px solid grey;*/
   display: block;
   margin: 0 auto 30px auto;
-}
+}*/
 #clock #controls {
   display: block;
   margin: 0 auto;
-  text-align: center;
+  /*text-align: center;*/
 }
 #clock #controls .btn {
   /*padding: 10px 13px;*/

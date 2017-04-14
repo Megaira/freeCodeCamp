@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Roboto:300,400');
+html {
+  position: relative;
+  min-height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  margin-bottom: 50px;
+  background-color: #fff;
+  /*color: #ef5350;*/
+}
+/*
+nav {
+  background-color: #ef5350;
+}*/
+
+/*********************/
+/*#settings {
+  background-color: green;
+}
+#clock {
+  padding-top: 15px;
+}
+#clock .status-icon {
+  background-color: yellow;
+  height: 42px;
+}
+#clock .status-icon i {
+  background-color: red;
+  float: right;
+}
+#clock .status-icon i::after {
+  clear: right;
+}
+#clock .clock {
+  background-color: blue;
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+}
+#clock #timerCanvas {
+  background-color: red;
+  width: 100%;
+}*/
+
+
+
+
+
+/**********************/
+/*.brand-logo {
+  font-family: 'Pacifico', cursive;
+}
+.brand-logo img {
+  width: 30px;
+}
+.pomodoro {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+
+.pomodoro #timer {
+  padding-top: 20px;
+}
+.pomodoro #timer .timer-icon {
+  height: 42px;
+}
+.pomodoro #timer .timer-icon i {
+  padding: 0;
+  margin-right: 15px;
+}*/
+/*.pomodoro canvas {*/
+  /*width: 240px;
+  height: 240px;*/
+  /*border: 1px solid grey;
+  padding-bottom: 20px;
+}*/
+/*.pomodoro #controls {
+  padding-top: 15px;
+}*/
+
+/*
+.pomodoro #timer {
+  font-size: 40px;
+}
+.pomodoro #controls {
+  padding: 20px;
+}
+.pomodoro #controls button {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.settings {
+  text-align: center;
+}
+*/
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  padding: 15px;
+  text-align: center;
+  /*color: rgba(255, 255, 255, 0.5);*/
+}
